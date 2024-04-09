@@ -1,33 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 18:45:09 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/08 18:40:24 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/04/04 18:14:22 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/04/08 18:41:48 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-static int	ft_isspace(char c)
+void	free_split(char **s)
 {
-	if (c == '\f' || c == '\n' || c == '\r' \
-	|| c == '\t' || c == '\v' || c == ' ')
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (*(s + i))
+	{
+		free(s + i);
+		i++;
+	}
+	free(s);
 }
 
-int	ft_atoi(const char *nptr)
+int	split_size(char **s)
 {
-	int	nbr;
-	int	sign;
+	int	i;
+
+	i = 0;
+	while (*(s + i))
+		i++;
+	return (i);
+}
+
+
+
+long	ft_atoi(const char *nptr)
+{
+	long	nbr;
+	int		sign;
 
 	nbr = 0;
 	sign = 1;
-	while (ft_isspace(*nptr) == 1)
+	while (*nptr == '\f' || *nptr == '\n' || *nptr == '\r' \
+	|| *nptr == '\t' || *nptr == '\v' || *nptr == ' ')
 		nptr++;
 	if (*nptr == '-')
 	{
@@ -35,9 +53,7 @@ int	ft_atoi(const char *nptr)
 		nptr++;
 	}
 	else if (*nptr == '+')
-	{
 		nptr++;
-	}
 	while (*nptr && ft_isdigit(*nptr))
 		nbr = nbr * 10 + (*nptr++ - '0');
 	return (nbr * sign);

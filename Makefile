@@ -7,7 +7,10 @@ DEBUG = -g
 HEADDIR = .
 HEADERS = push_swap.h
 
-SRCS = main.c \
+SRCS =	main.c \
+		dlst.c \
+		stack.c \
+		utils.c \
 
 OBJSDIR = ./objs/
 OBJSLIST = $(SRCS:.c=.o)
