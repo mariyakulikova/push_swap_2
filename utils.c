@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:14:22 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/08 18:41:48 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:28:44 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	split_size(char **s)
 		i++;
 	return (i);
 }
-
-
 
 long	ft_atoi(const char *nptr)
 {

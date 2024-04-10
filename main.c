@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:32:37 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/08 17:54:11 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:53:37 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,8 @@ static int	is_valid(int argc, char **argv)
 
 static void	params_init(t_ps *params)
 {
-	params->a = NULL;
-	params->b = NULL;
-	params->a_max = 0;
-	params->a_min = 0;
-	params->a_size = 0;
-	params->b_max = 0;
-	params->b_min = 0;
-	params->b_size = 0;
+	stack_init(params->a);
+	stack_init(params->b);
 }
 
 void	test(t_ps *params)
@@ -59,8 +53,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		params.a = get_stack(argv + 1, argc - 1);
-	params.a_size = stack_size(params.a);
-	if (params.a_size > 1 && !is_stack_sorted(params.a))
+	if (params.a->size > 1 && !is_stack_sorted(params.a))
 		sort(params);
 	test(&params);
 	return (0);

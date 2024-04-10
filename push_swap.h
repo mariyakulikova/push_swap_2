@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/08 17:52:48 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:52:23 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <limits.h>
 # include "libft.h"
 
 typedef struct s_dlst {
@@ -24,15 +25,18 @@ typedef struct s_dlst {
 	struct s_dlst	*prev;
 }			t_dlst;
 
+typedef struct s_stack
+{
+	t_dlst	*head;
+	int		max;
+	int		min;
+	int		size;
+}			t_stack;
+
+
 typedef struct s_ps{
-	int		a_max;
-	int		a_min;
-	int		b_max;
-	int		b_min;
-	int		a_size;
-	int		b_size;
-	t_dlst	*a;
-	t_dlst	*b;
+	t_stack	*a;
+	t_stack	*b;
 }			t_ps;
 
 t_dlst	*dlst_new(int value);
@@ -40,5 +44,6 @@ int		split_size(char **s);
 void	free_split(char **s);
 int		is_stack_sorted(t_dlst *stack);
 int		stack_size(t_dlst *stack);
+void	stack_init(t_stack *stack);
 
 #endif

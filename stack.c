@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:52:42 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/08 18:23:04 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:34:39 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ int	stack_size(t_dlst *stack)
 		curr = curr->next;
 	}
 	return (i);
+}
+
+void	stack_init(t_stack *stack)
+{
+	stack->head = NULL;
+	stack->max = 0;
+	stack->min = 0;
+	stack->size = 0;
 }
 
 t_dlst	*get_stack(char **tab, int size)
