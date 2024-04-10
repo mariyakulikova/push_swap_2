@@ -11,6 +11,7 @@ SRCS =	main.c \
 		dlst.c \
 		stack.c \
 		utils.c \
+		sort.c \
 
 OBJSDIR = ./objs/
 OBJSLIST = $(SRCS:.c=.o)

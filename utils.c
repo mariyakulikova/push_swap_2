@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:14:22 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/10 16:28:44 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/10 22:06:26 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_split(char **s)
 	i = 0;
 	while (*(s + i))
 	{
-		free(s + i);
+		free(*(s + i));
 		i++;
 	}
 	free(s);
@@ -32,10 +32,24 @@ int	split_size(char **s)
 	i = 0;
 	while (*(s + i))
 		i++;
+	printf("split size - %d\n", i);
 	return (i);
 }
 
-long	ft_atoi(const char *nptr)
+void	my_exit(t_ps *params, int status)
+{
+	if (!params)
+		exit(status);
+	// TODO free t_dlst
+	if (params->a)
+		free(params->a);
+	if (params->b)
+		free(params->b);
+	free(params);
+}
+
+// TODO check for not digit characters
+long	my_atol(char *nptr)
 {
 	long	nbr;
 	int		sign;

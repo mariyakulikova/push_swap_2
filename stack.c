@@ -6,18 +6,18 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:52:42 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/10 16:34:39 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:55:31 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_stack_sorted(t_dlst *stack)
+int	is_stack_sorted(t_dlst *head)
 {
 	t_dlst	*curr;
 
-	curr = stack;
-	while (curr->next)
+	curr = head;
+	while (head && curr->next)
 	{
 		if (curr->value > curr->next->value)
 			return (0);
@@ -26,14 +26,14 @@ int	is_stack_sorted(t_dlst *stack)
 	return (1);
 }
 
-int	stack_size(t_dlst *stack)
+int	stack_size(t_dlst *head)
 {
 	int		i;
 	t_dlst	*curr;
 
 	i = 0;
-	curr = stack;
-	while (curr)
+	curr = head;
+	while (head && curr)
 	{
 		i++;
 		curr = curr->next;
@@ -41,20 +41,28 @@ int	stack_size(t_dlst *stack)
 	return (i);
 }
 
-void	stack_init(t_stack *stack)
+t_stack	*stack_init()
 {
+	t_stack	*stack;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
 	stack->head = NULL;
 	stack->max = 0;
 	stack->min = 0;
 	stack->size = 0;
+	return (stack);
 }
 
 t_dlst	*get_stack(char **tab, int size)
 {
-	int		value;
-	t_dlst	*head;
-	t_dlst	*curr;
-	t_dlst	*next;
+	// int		value;
+	// t_dlst	*head;
+	// t_dlst	*curr;
+	// t_dlst	*next;
 
-	value = ft_a
+	for (int i = 0; i < size; i++)
+		printf("%s\n", *(tab + i));
+	return NULL;
 }

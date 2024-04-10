@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/10 16:52:23 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:48:30 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <limits.h>
 # include "libft.h"
 
-typedef struct s_dlst {
+typedef struct s_dlst
+{
 	int				value;
 	struct s_dlst	*next;
 	struct s_dlst	*prev;
@@ -33,8 +34,8 @@ typedef struct s_stack
 	int		size;
 }			t_stack;
 
-
-typedef struct s_ps{
+typedef struct s_ps
+{
 	t_stack	*a;
 	t_stack	*b;
 }			t_ps;
@@ -42,8 +43,12 @@ typedef struct s_ps{
 t_dlst	*dlst_new(int value);
 int		split_size(char **s);
 void	free_split(char **s);
-int		is_stack_sorted(t_dlst *stack);
-int		stack_size(t_dlst *stack);
-void	stack_init(t_stack *stack);
+int		is_stack_sorted(t_dlst *head);
+int		stack_size(t_dlst *head);
+t_stack	*stack_init();
+void	my_exit(t_ps *params, int status);
+// long	ft_atol(char *nptr);
+t_dlst	*get_stack(char **tab, int size);
+void	sort(t_ps *params);
 
 #endif
