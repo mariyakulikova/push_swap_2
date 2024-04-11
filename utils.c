@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:14:22 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/10 22:06:26 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/11 13:09:03 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,23 @@ int	split_size(char **s)
 	return (i);
 }
 
-void	my_exit(t_ps *params, int status)
+int	free_and_exit(t_ps *params, int exit_status, int print_err)
 {
+	if (print_err)
+		write(2, ERR, ft_strlen(ERR));
 	if (!params)
-		exit(status);
+		exit(exit_status);
 	// TODO free t_dlst
 	if (params->a)
 		free(params->a);
 	if (params->b)
 		free(params->b);
 	free(params);
+	exit(exit_status);
 }
 
 // TODO check for not digit characters
-long	my_atol(char *nptr)
+long	alpha_to_long(char *nptr)
 {
 	long	nbr;
 	int		sign;

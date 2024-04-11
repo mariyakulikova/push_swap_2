@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/10 21:48:30 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:18:09 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include <limits.h>
 # include "libft.h"
+
+# define ERR "Error\n"
 
 typedef struct s_dlst
 {
@@ -45,9 +47,10 @@ int		split_size(char **s);
 void	free_split(char **s);
 int		is_stack_sorted(t_dlst *head);
 int		stack_size(t_dlst *head);
+void	free_dlst(t_dlst *head);
 t_stack	*stack_init();
-void	my_exit(t_ps *params, int status);
-// long	ft_atol(char *nptr);
+void	set_stack_max_min(t_stack *stack);
+int		free_and_exit(t_ps *params, int exit_status, int print_err);
 t_dlst	*get_stack(char **tab, int size);
 void	sort(t_ps *params);
 

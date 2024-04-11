@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:52:42 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/10 21:55:31 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:18:32 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,52 @@ t_stack	*stack_init()
 	return (stack);
 }
 
+void	set_stack_max_min(t_stack *stack)
+{
+	t_dlst	*curr;
+	int		max;
+	int		min;
+
+	curr = stack->head;
+	max = curr->value;
+	min = curr->value;
+	while (curr)
+	{
+		if (curr->value > max)
+			max = curr->value;
+		if (curr->value < min)
+			min = curr->value;
+		curr = curr->next;
+	}
+	stack->max = max;
+	stack->min = min;
+}
+
 t_dlst	*get_stack(char **tab, int size)
 {
-	// int		value;
-	// t_dlst	*head;
-	// t_dlst	*curr;
-	// t_dlst	*next;
+	int		value;
+	t_dlst	*head;
+	t_dlst	*curr;
+	t_dlst	*prev;
 
-	for (int i = 0; i < size; i++)
-		printf("%s\n", *(tab + i));
-	return NULL;
+	value = 1;
+	head = dlst_new(value);
+	if (!head)
+		return (NULL);
+	curr = head;
+	prev = NULL;
+	while (value++ < size)
+	{
+		curr->next = dlst_new(value);
+		if (!curr->next)
+		{
+			free_dlst(head);
+			return (NULL);
+		}
+		curr->prev = prev;
+		prev = curr;
+		curr = curr->next;
+	}
+	curr->prev = prev;
+	return (head);
 }
