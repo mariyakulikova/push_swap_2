@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:14:22 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/11 13:09:03 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/12 22:06:48 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	split_size(char **s)
 	i = 0;
 	while (*(s + i))
 		i++;
-	printf("split size - %d\n", i);
 	return (i);
 }
 
@@ -51,7 +50,6 @@ int	free_and_exit(t_ps *params, int exit_status, int print_err)
 	exit(exit_status);
 }
 
-// TODO check for not digit characters
 long	alpha_to_long(char *nptr)
 {
 	long	nbr;

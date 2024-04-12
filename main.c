@@ -6,77 +6,118 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:32:37 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/11 17:56:43 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/12 22:06:30 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_valid(int argc, char **argv)
+static char	**get_norm_data(char **argv, int argc)
 {
-	if (argc == 1 || (argc == 2 && !**(argv + 1)))
-		return (0);
-	return (1);
-}
+	char	**tab;
+	int		i;
 
-t_ps	*params_init()
-{
-	t_ps	*params;
-
-	params = (t_ps *)malloc(sizeof(t_ps));
-	if (!params)
-		return (NULL);
-	params->a = stack_init();
-	params->b = stack_init();
-	if (!params->a || !params->b)
+	if (argc == 2)
 	{
-		free(params);
+		tab = ft_split(*(argv + 1), ' ');
+		if (!tab)
+			return (NULL);
+		return (tab);
+	}
+	tab = (char **)malloc(sizeof(char *) * argc);
+	if (!tab)
 		return (NULL);
-	}
-	return (params);
-}
-
-void	set_stack_params(t_ps *params, char **split, int size)
-{
-	params->a->head = get_stack(split, size);
-	if (!params->a->head)
-		free_and_exit(params, EXIT_FAILURE, 0);
-	params->a->size = size;
-	set_stack_max_min(params->a);
-}
-
-void	test(t_ps *params)
-{
-	t_dlst	*curr;
-
-	curr = params->a->head;
-	while (curr)
+	i = -1;
+	while (++i < argc - 1)
 	{
-		printf("curr - %d, prev - %d, next - %d\n", curr->value, curr->prev ? curr->prev->value : -666, curr->next ? curr->next->value : -666);
-		curr = curr->next;
+		*(tab + i) = ft_strdup(*(argv + 1 + i));
+		if (!*(tab + i))
+		{
+			// TODO free
+			return (NULL);
+		}
 	}
+	*(tab + i) = NULL;
+	return (tab);
+}
+
+static int	is_duplicate(int **tab, int size, int value)
+{
+	int	i;
+
+	i = -1;
+	while (++i < size)
+	{
+		if (*(*tab + i) == value)
+			return (1);
+	}
+	return (0);
+}
+
+static int	set_value(long *value, char *data)
+{
+	int	i;
+
+	i = 0 ;
+	while (*(data + i))
+	{
+		if (!ft_isdigit(*(data + i)))
+			return (1);
+		i++;
+	}
+	*value = alpha_to_long(data);
+	if (*value > INT_MAX || *value < INT_MIN)
+		return (1);
+	return (0);
+}
+
+static int	set_tab(int **tab, char **argv, int argc)
+{
+	int		i;
+	char	**data;
+	int		size;
+	long	value;
+
+	data = get_norm_data(argv, argc);
+	if (!data)
+		return (-1);
+	size = (split_size(data));
+	*tab = (int *)malloc(sizeof(int) * size);
+	i = -1;
+	while (++i < size)
+	{
+		if (set_value(&value, *(data + i)))
+			return (-1);
+		if (is_duplicate(tab, size, value))
+			return -1;
+		*(*tab + i) = (int)value;
+	}
+	return (size);
 }
 
 int	main(int argc, char **argv)
 {
 	t_ps	*params;
-	char	**split;
+	int		*tab;
+	int		size;
 
-	if (!is_valid(argc, argv))
+	if (argc == 1 || (argc == 2 && !**(argv + 1)))
 		return (0);
+	size = set_tab(&tab, argv, argc);
+	if (size == -1)
+	{
+		write(2, ERR, ft_strlen(ERR));
+		free(tab);
+		return (EXIT_FAILURE);
+	}
 	params = params_init();
 	if (!params)
 		return (EXIT_FAILURE);
-	if (argc == 2)
-	{
-		split = ft_split(*(argv + 1), ' ');
-		set_stack_params(params, split, split_size(split));
-		free_split(split);
-	}
-	else
-		set_stack_params(params, argv + 1, argc - 1);
-	if (params->a->size > 1 && !is_stack_sorted(params->a->head))
-		sort(params);
+	set_stack_params(params, tab, size);
+	free(tab);
+	// if (params->a->size > 1 && !is_stack_sorted(params->a->head))
+	// 	sort(params);
 	test(params);
-	return (free_and_exit(params, EXIT_FAILURE, 0));
+	// return (free_and_exit(params, EXIT_FAILURE, 0));
+	return (0);
 }
