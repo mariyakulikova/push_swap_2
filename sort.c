@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:31:01 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/10 17:31:45 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:09:54 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,8 @@
 void	sort(t_ps *params)
 {
 	printf("THIS IS SORT\n");
+	test(params);
+	printf("<-------------------------------------------------------->\n");
+	sa(params->a);
+	test(params);
 }

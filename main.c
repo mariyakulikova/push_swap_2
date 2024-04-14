@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:32:37 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/14 17:45:45 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:09:10 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	set_stack_params(params, tab, size);
 	free(tab);
-	if (params->a->size > 1 && !is_stack_sorted(params->a->head))
-		sort(params);
-	test(params);
+	// if (params->a->size > 1 && !is_stack_sorted(params->a->head))
+	sort(params);
+	// test(params);
 	return (free_and_exit(params, EXIT_SUCCESS));
 }

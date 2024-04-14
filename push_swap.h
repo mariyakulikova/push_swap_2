@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/14 18:12:00 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/14 19:07:15 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ void	set_stack_max_min(t_stack *stack);
 int		free_and_exit(t_ps *params, int exit_status);
 t_dlst	*get_stack(int *tab, int size);
 void	sort(t_ps *params);
+
+/* operations.c */
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
 
 /* stack2.c */
 void	free_stack(t_stack *stack);
