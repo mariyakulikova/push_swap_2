@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:14:22 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/12 22:06:48 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/14 17:48:18 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,14 @@ int	split_size(char **s)
 	return (i);
 }
 
-int	free_and_exit(t_ps *params, int exit_status, int print_err)
+int	free_and_exit(t_ps *params, int exit_status)
 {
-	if (print_err)
-		write(2, ERR, ft_strlen(ERR));
 	if (!params)
 		exit(exit_status);
-	// TODO free t_dlst
 	if (params->a)
-		free(params->a);
+		free_stack(params->a);
 	if (params->b)
-		free(params->b);
+		free_stack(params->b);
 	free(params);
 	exit(exit_status);
 }

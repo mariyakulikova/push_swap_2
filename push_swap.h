@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/12 22:07:05 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/14 18:12:00 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,15 @@ void	free_split(char **s);
 long	alpha_to_long(char *nptr);
 int		is_stack_sorted(t_dlst *head);
 int		stack_size(t_dlst *head);
-void	free_dlst(t_dlst *head);
+void	free_dlst_list(t_dlst *head);
 t_stack	*stack_init();
 void	set_stack_max_min(t_stack *stack);
-int		free_and_exit(t_ps *params, int exit_status, int print_err);
+int		free_and_exit(t_ps *params, int exit_status);
 t_dlst	*get_stack(int *tab, int size);
 void	sort(t_ps *params);
+
+/* stack2.c */
+void	free_stack(t_stack *stack);
 
 /* params.c */
 void	set_stack_params(t_ps *params, int *tab, int size);

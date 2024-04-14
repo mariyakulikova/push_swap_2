@@ -10,9 +10,11 @@ HEADERS = push_swap.h
 SRCS =	main.c \
 		dlst.c \
 		stack.c \
+		stack2.c \
 		utils.c \
 		sort.c \
 		params.c \
+		operations.c \
 		test.c \
 
 OBJSDIR = ./objs/

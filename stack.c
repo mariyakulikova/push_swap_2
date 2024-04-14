@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:52:42 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/12 15:01:41 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/14 18:10:29 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_dlst	*get_stack(int *tab, int size)
 		curr->next = dlst_new(*(tab + i));
 		if (!curr->next)
 		{
-			free_dlst(head);
+			free_dlst_list(head);
 			return (NULL);
 		}
 		curr->prev = prev;

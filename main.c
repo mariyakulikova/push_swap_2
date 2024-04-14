@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:32:37 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/12 22:06:30 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/14 17:45:45 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,11 @@ static int	set_tab(int **tab, char **argv, int argc)
 	{
 		if (set_value(&value, *(data + i)))
 			return (-1);
-		if (is_duplicate(tab, size, value))
+		if (is_duplicate(tab, i, value))
 			return -1;
 		*(*tab + i) = (int)value;
 	}
+	free_split(data);
 	return (size);
 }
 
@@ -115,9 +116,8 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	set_stack_params(params, tab, size);
 	free(tab);
-	// if (params->a->size > 1 && !is_stack_sorted(params->a->head))
-	// 	sort(params);
+	if (params->a->size > 1 && !is_stack_sorted(params->a->head))
+		sort(params);
 	test(params);
-	// return (free_and_exit(params, EXIT_FAILURE, 0));
-	return (0);
+	return (free_and_exit(params, EXIT_SUCCESS));
 }
