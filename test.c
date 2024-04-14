@@ -11,11 +11,12 @@ void	print_split(char **tab)
 	printf("\n");
 }
 
-void	test(t_ps *params)
+void	test(t_stack *stack, char *name)
 {
 	t_dlst	*curr;
 
-	curr = params->a->head;
+	curr = stack->head;
+	printf("stack %s\n", name);
 	while (curr)
 	{
 		printf("curr - %d, prev - %d, next - %d\n", curr->value, curr->prev ? curr->prev->value : -666, curr->next ? curr->next->value : -666);

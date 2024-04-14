@@ -14,7 +14,9 @@ SRCS =	main.c \
 		utils.c \
 		sort.c \
 		params.c \
-		operations.c \
+		cmd_utils.c \
+		cmd_swap.c \
+		cmd_put.c \
 		test.c \
 
 OBJSDIR = ./objs/

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/14 19:07:15 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/14 21:45:04 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,16 @@ int		free_and_exit(t_ps *params, int exit_status);
 t_dlst	*get_stack(int *tab, int size);
 void	sort(t_ps *params);
 
-/* operations.c */
+/* cmd_utils.c */
+void	swap_first_2_elem(t_stack *stack);
+void	put_at_top(t_stack *stack1, t_stack *stack2);
+
+/* cmd.c */
 void	sa(t_stack *a);
 void	sb(t_stack *b);
 void	ss(t_stack *a, t_stack *b);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *b, t_stack *a);
 
 /* stack2.c */
 void	free_stack(t_stack *stack);
@@ -69,6 +75,6 @@ t_ps	*params_init();
 
 /* test */
 void	print_split(char **tab);
-void	test(t_ps *params);
+void	test(t_stack *stack, char *name);
 
 #endif
