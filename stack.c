@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:52:42 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/14 18:10:29 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:17:59 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_stack	*stack_init()
 	if (!stack)
 		return (NULL);
 	stack->head = NULL;
+	stack->last = NULL;
 	stack->max = 0;
 	stack->min = 0;
 	stack->size = 0;

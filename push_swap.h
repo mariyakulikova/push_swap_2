@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/15 11:11:53 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:17:35 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_dlst
 typedef struct s_stack
 {
 	t_dlst	*head;
+	t_dlst	*last;
 	int		max;
 	int		min;
 	int		size;

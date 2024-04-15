@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:28:34 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/14 18:13:25 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/15 10:52:36 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,16 @@ void	free_dlst_list(t_dlst *head)
 		if (next)
 			next = next->next;
 	}
+}
+
+t_dlst	*dlstlast(t_dlst *head)
+{
+	t_dlst	*curr;
+
+	if (!head)
+		return (NULL);
+	curr = head;
+	while (curr->next)
+		curr = curr->next;
+	return (curr);
 }
