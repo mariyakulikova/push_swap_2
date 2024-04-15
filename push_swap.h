@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/15 11:17:35 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:13:02 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ typedef struct s_ps
 /* cmd_put.c */
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *b, t_stack *a);
+
+/* cmd_rev_rotate.c */
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
 
 /* cmd_rotate */
 void	ra(t_stack *a);
