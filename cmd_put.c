@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:49:45 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/15 10:44:02 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:01:20 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static void	put_at_top(t_stack *stack1, t_stack *stack2)
 	t_dlst	*head1_prev;
 	t_dlst	*head2_prev;
 
-	if (stack2->size == 0)
-		return ;
 	head1_prev = stack1->head;
 	head2_prev = stack2->head;
 	stack2->head = head2_prev->next;
@@ -31,7 +29,7 @@ static void	put_at_top(t_stack *stack1, t_stack *stack2)
 
 void	pa(t_stack *a, t_stack *b)
 {
-	if (!b)
+	if (!b || b->size == 0)
 		return;
 	write(1, "pa\n", 3);
 	put_at_top(a, b);
@@ -39,7 +37,7 @@ void	pa(t_stack *a, t_stack *b)
 
 void	pb(t_stack *b, t_stack *a)
 {
-	if (!a)
+	if (!a || a->size == 0)
 		return;
 	write(1, "pb\n", 3);
 	put_at_top(b, a);
