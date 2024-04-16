@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:10:56 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/15 13:36:40 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:22:31 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	rra(t_stack *a)
 {
 	if (a && a->size > 1)
 	{
-		write(1, "ra\n", 3);
+		write(1, "rra\n", 4);
 		rev_rotate_stack(a);
 	}
 }
@@ -41,7 +41,7 @@ void	rrb(t_stack *b)
 {
 	if (b && b->size > 1)
 	{
-		write(1, "rb\n", 3);
+		write(1, "rrb\n", 4);
 		rev_rotate_stack(b);
 	}
 }
@@ -50,7 +50,7 @@ void	rrr(t_stack *a, t_stack *b)
 {
 	if (!a && !b)
 		return ;
-	write(1, "ra\n", 3);
+	write(1, "rrr\n", 4);
 	if (a && a->size > 1)
 		rev_rotate_stack(a);
 	if (b && b->size > 1)
