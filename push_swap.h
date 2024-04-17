@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 12:06:17 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:45:03 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_ps
 	t_stack	*b;
 }			t_ps;
 
-/* cmd_put.c */
+/* cmd_push.c */
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *b, t_stack *a);
 

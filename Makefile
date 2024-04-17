@@ -18,7 +18,7 @@ SRCS =	main.c \
 		params.c \
 		push_swap.c \
 		cmd_swap.c \
-		cmd_put.c \
+		cmd_push.c \
 		cmd_rotate.c \
 		cmd_rev_rotate.c \
 		test.c \

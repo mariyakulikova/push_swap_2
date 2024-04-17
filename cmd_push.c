@@ -6,13 +6,13 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:49:45 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 12:38:44 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:44:22 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	put_at_top(t_stack *stack1, t_stack *stack2)
+static void	push_at_top(t_stack *stack1, t_stack *stack2)
 {
 	t_dlst	*head1_prev;
 	t_dlst	*head2_prev;
@@ -36,7 +36,7 @@ void	pa(t_stack *a, t_stack *b)
 	if (!b || b->size == 0)
 		return;
 	write(1, "pa\n", 3);
-	put_at_top(a, b);
+	push_at_top(a, b);
 }
 
 void	pb(t_stack *b, t_stack *a)
@@ -44,5 +44,5 @@ void	pb(t_stack *b, t_stack *a)
 	if (!a || a->size == 0)
 		return;
 	write(1, "pb\n", 3);
-	put_at_top(b, a);
+	push_at_top(b, a);
 }
