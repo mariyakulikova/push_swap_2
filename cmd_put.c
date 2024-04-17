@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:49:45 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 12:29:55 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:38:44 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	put_at_top(t_stack *stack1, t_stack *stack2)
 	stack1->head->next = head1_prev;
 	set_stack_curr_idx(stack1);
 	set_stack_curr_idx(stack2);
+	stack1->size++;
+	stack2->size--;
 }
 
 void	pa(t_stack *a, t_stack *b)
