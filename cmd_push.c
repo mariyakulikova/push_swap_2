@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_put.c                                          :+:      :+:    :+:   */
+/*   cmd_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:49:45 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 12:44:22 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 21:20:10 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	push_at_top(t_stack *stack1, t_stack *stack2)
 	head2_prev = stack2->head;
 	stack2->head = head2_prev->next;
 	stack2->head->prev = NULL;
-	stack1->head->prev = head2_prev;
+	if (stack1->head)
+		stack1->head->prev = head2_prev;
 	stack1->head = head2_prev;
 	stack1->head->prev = NULL;
 	stack1->head->next = head1_prev;
@@ -29,6 +30,8 @@ static void	push_at_top(t_stack *stack1, t_stack *stack2)
 	set_stack_curr_idx(stack2);
 	stack1->size++;
 	stack2->size--;
+	set_stack_max_min(stack1);
+	set_stack_max_min(stack2);
 }
 
 void	pa(t_stack *a, t_stack *b)

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 12:45:03 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:56:11 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_stack
 {
 	t_dlst	*head;
 	t_dlst	*last;
-	int		max;
-	int		min;
+	t_dlst	*max;
+	t_dlst	*min;
 	int		size;
 }			t_stack;
 
@@ -69,6 +69,7 @@ void	ss(t_stack *a, t_stack *b);
 t_dlst	*dlst_new(int value, int alias);
 void	free_dlst_list(t_dlst *head);
 t_dlst	*dlstlast(t_dlst *head);
+t_dlst	*find_target(t_dlst *node, t_stack *head, int alias);
 
 /* params.c */
 void	set_stack_params(t_ps *params, int *tab, int *sorted, int size);

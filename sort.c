@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 17:31:01 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 11:41:01 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:57:22 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	bubble_sort(int *tab, int size)
 
 void	sort3(t_stack *stack, char c)
 {
-	if (stack->head->value == stack->max)
+	if (stack->head->value == stack->max->value)
 	{
 		if (c == 'a')
 			ra(stack);
 		else
 			rb(stack);
 	}
-	else if (stack->head->next->value == stack->max)
+	else if (stack->head->next->value == stack->max->value)
 	{
 		if (c == 'a')
 			rra(stack);

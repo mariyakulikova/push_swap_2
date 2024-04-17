@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:28:34 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 12:12:03 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 21:38:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,24 @@ t_dlst	*dlstlast(t_dlst *head)
 	while (curr->next)
 		curr = curr->next;
 	return (curr);
+}
+
+t_dlst	*find_target(t_dlst *node, t_stack *stack, int alias)
+{
+	t_dlst	*curr;
+	int		i;
+
+	curr = stack->head;
+	while (curr)
+	{
+		i = 1;
+		while (i <= stack->max->alias)
+		{
+			if (node->alias + i == curr->alias)
+				return (curr);
+			i++;
+		}
+		curr = curr->next;
+	}
+	return (stack->min);
 }

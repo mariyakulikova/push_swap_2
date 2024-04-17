@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:52:42 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 09:39:02 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:55:33 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ t_stack	*stack_init()
 void	set_stack_max_min(t_stack *stack)
 {
 	t_dlst	*curr;
-	int		max;
-	int		min;
+	t_dlst	*max;
+	t_dlst	*min;
 
 	curr = stack->head;
-	max = curr->value;
-	min = curr->value;
+	max = curr;
+	min = curr;
 	while (curr)
 	{
-		if (curr->value > max)
-			max = curr->value;
-		if (curr->value < min)
-			min = curr->value;
+		if (curr->value > max->value)
+			max = curr;
+		if (curr->value < min->value)
+			min = curr;
 		curr = curr->next;
 	}
 	stack->max = max;
