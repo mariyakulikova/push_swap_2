@@ -11,9 +11,12 @@ SRCS =	main.c \
 		dlst.c \
 		stack.c \
 		stack2.c \
+		tab_utils.c \
+		tab.c \
 		utils.c \
 		sort.c \
 		params.c \
+		push_swap.c \
 		cmd_swap.c \
 		cmd_put.c \
 		cmd_rotate.c \

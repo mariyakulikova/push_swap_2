@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:52:42 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/15 11:17:59 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 09:39:02 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	set_stack_max_min(t_stack *stack)
 	stack->min = min;
 }
 
-t_dlst	*get_stack(int *tab, int size)
+t_dlst	*get_stack(int *tab, int *sorted, int size)
 {
 	int		i;
 	t_dlst	*head;
@@ -85,14 +85,14 @@ t_dlst	*get_stack(int *tab, int size)
 	t_dlst	*prev;
 
 	i = 0;
-	head = dlst_new(*(tab + i));
+	head = dlst_new(*(tab + i), get_alias(sorted, size, *(tab + i)));
 	if (!head)
 		return (NULL);
 	curr = head;
 	prev = NULL;
 	while (++i < size)
 	{
-		curr->next = dlst_new(*(tab + i));
+		curr->next = dlst_new(*(tab + i), get_alias(sorted, size, *(tab + i)));
 		if (!curr->next)
 		{
 			free_dlst_list(head);

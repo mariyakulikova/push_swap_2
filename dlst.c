@@ -6,13 +6,13 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:28:34 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/15 10:52:36 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:12:03 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dlst	*dlst_new(int value)
+t_dlst	*dlst_new(int value, int alias)
 {
 	t_dlst	*new;
 
@@ -21,7 +21,9 @@ t_dlst	*dlst_new(int value)
 		return (NULL);
 	new->next = NULL;
 	new->prev = NULL;
+	new->target = NULL;
 	new->value = value;
+	new->alias = alias;
 	return (new);
 }
 

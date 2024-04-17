@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:14:22 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/14 17:48:18 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:09:16 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,18 @@ long	alpha_to_long(char *nptr)
 	while (*nptr && ft_isdigit(*nptr))
 		nbr = nbr * 10 + (*nptr++ - '0');
 	return (nbr * sign);
+}
+
+int	get_alias(int *tab, int size, int value)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (*(tab + i) == value)
+			break ;
+		i++;
+	}
+	return (i);
 }

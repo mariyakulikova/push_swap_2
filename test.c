@@ -19,7 +19,14 @@ void	test(t_stack *stack, char *name)
 	printf("stack %s\n", name);
 	while (curr)
 	{
-		printf("curr - %d, prev - %d, next - %d\n", curr->value, curr->prev ? curr->prev->value : -666, curr->next ? curr->next->value : -666);
+		printf(\
+		"curr - %d, prev - %d, next - %d, curr_idx - %d, alias - %d\n", \
+		curr->value, \
+		curr->prev ? curr->prev->value : -666, \
+		curr->next ? curr->next->value : -666, \
+		curr->curr_idx, \
+		curr->alias \
+		);
 		curr = curr->next;
 	}
 }
