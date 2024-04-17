@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 21:46:02 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/15 11:00:27 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:30:31 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	swap_first_2_elem(t_stack *stack)
 	temp->next = stack->head;
 	temp->prev = NULL;
 	stack->head = temp;
+	set_stack_curr_idx(stack);
 }
 
 void	sa(t_stack *a)

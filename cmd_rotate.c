@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 10:37:55 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/15 12:14:10 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:30:22 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	rotate_stack(t_stack *stack)
 	prev_head->next = NULL;
 	prev_head->prev = stack->last;
 	stack->last = prev_head;
+	set_stack_curr_idx(stack);
 }
 
 void	ra(t_stack *a)
