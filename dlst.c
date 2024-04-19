@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:28:34 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 21:38:14 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/19 10:26:51 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ t_dlst	*dlst_new(int value, int alias)
 	new->target = NULL;
 	new->value = value;
 	new->alias = alias;
+	new->curr_idx = -1;
+	new->direction = 0;
+	new->cost = -1;
+	new->moves = -1;
 	return (new);
 }
 
@@ -54,22 +58,22 @@ t_dlst	*dlstlast(t_dlst *head)
 	return (curr);
 }
 
-t_dlst	*find_target(t_dlst *node, t_stack *stack, int alias)
+t_dlst	*find_target(t_stack *stack, int alias)
 {
 	t_dlst	*curr;
 	int		i;
 
-	curr = stack->head;
-	while (curr)
+	i = 1;
+	while (i <= stack->max->alias)
 	{
-		i = 1;
-		while (i <= stack->max->alias)
+		curr = stack->head;
+		while (curr)
 		{
-			if (node->alias + i == curr->alias)
+			if (alias + i == curr->alias)
 				return (curr);
-			i++;
+			curr = curr->next;
 		}
-		curr = curr->next;
+		i++;
 	}
 	return (stack->min);
 }

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 12:31:43 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 09:46:46 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:33:46 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	set_stack_params(t_ps *params, int *tab, int *sorted, int size)
 	params->a->last = dlstlast(params->a->head);
 	params->a->size = size;
 	set_stack_max_min(params->a);
-	set_stack_curr_idx(params->a);
+	set_stack_idx(params->a);
 }

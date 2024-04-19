@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:34:50 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 20:56:11 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/19 10:28:00 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ typedef struct s_dlst
 	int				value;
 	int				alias;
 	int				curr_idx;
+	int				cost;
+	int				moves;
+	int				direction;
 	struct s_dlst	*next;
 	struct s_dlst	*prev;
 	struct s_dlst	*target;
@@ -69,7 +72,7 @@ void	ss(t_stack *a, t_stack *b);
 t_dlst	*dlst_new(int value, int alias);
 void	free_dlst_list(t_dlst *head);
 t_dlst	*dlstlast(t_dlst *head);
-t_dlst	*find_target(t_dlst *node, t_stack *head, int alias);
+t_dlst	*find_target(t_stack *head, int alias);
 
 /* params.c */
 void	set_stack_params(t_ps *params, int *tab, int *sorted, int size);
@@ -91,7 +94,9 @@ t_dlst	*get_stack(int *tab, int *sorted, int size);
 
 /* stack2.c */
 void	free_stack(t_stack *stack);
-void	set_stack_curr_idx(t_stack *stack);
+void	set_stack_idx(t_stack *stack);
+void	move_stack_a(t_stack *a, t_dlst *node);
+void	move_stack_b(t_stack *b, t_dlst *node);
 
 /* utils.c */
 void	free_split(char **s);

@@ -6,40 +6,61 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:22:37 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 20:45:19 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/19 21:14:25 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	set_targets(t_stack *stack1, t_stack *stack2)
+static t_dlst	*evaluate_targets_and_get_costless(t_stack *stack1, t_stack *stack2)
 {
 	t_dlst	*curr1;
+	t_dlst	*best;
 
 	curr1 = stack1->head;
+	best = curr1;
 	while (curr1)
 	{
-		curr1->target = find_target(curr1, stack2, curr1->alias);
+		curr1->target = find_target(stack2, curr1->alias);
+		curr1->cost = curr1->moves + curr1->target->moves + 1;
+		if (curr1->cost == 1)
+			return (curr1);
+		if (best->cost > curr1->cost)
+			best = curr1;
 		curr1 = curr1->next;
 	}
+	return (best);
 }
 
-void	push_swap(t_ps *params)
+static void print_stacks(t_ps *params)
 {
-	// printf("THIS IS TEST\n");
-	test(params->a, "a");
-
-	printf("<-------------------------------------------------------->\n");
-	// int tab[3] = {7, 8, 9};
-	// params->b->head = get_stack(tab, tab, 3);
-	// params->b->size = 3;
-	// test(params->b, "b");
-	while (params->a->size > 3)
-		pb(params->b, params->a);
-	sort3(params->a, 'a');
-	set_targets(params->b, params->a);
 	printf("<-------------------------------------------------------->\n");
 	test(params->a, "a");
 	printf("<-------------------------------------------------------->\n");
 	test(params->b, "b");
+	// printf("stack B last - %d\n", params->b->last->alias);
+	printf("<-------------------------------------------------------->\n");
+}
+
+void	push_swap(t_ps *params)
+{
+	t_dlst	*node;
+	t_dlst	*target;
+
+	print_stacks(params);
+	while (params->a->size > 3)
+		pb(params->b, params->a);
+	sort3(params->a, 'a');
+	while (params->b->size > 0)
+	{
+		node = evaluate_targets_and_get_costless(params->b, params->a);
+		print_stacks(params);
+		target = node->target;
+		if (node ->moves > 0)
+			move_stack_b(params->b, node);
+		if (target->moves > 0)
+			move_stack_a(params->a, target);
+		pa(params->a, params->b);
+	}
+	print_stacks(params);
 }
