@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:22:37 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/19 21:14:25 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/19 21:42:34 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ void	push_swap(t_ps *params)
 	t_dlst	*node;
 	t_dlst	*target;
 
-	print_stacks(params);
+	// print_stacks(params);
 	while (params->a->size > 3)
 		pb(params->b, params->a);
 	sort3(params->a, 'a');
 	while (params->b->size > 0)
 	{
 		node = evaluate_targets_and_get_costless(params->b, params->a);
-		print_stacks(params);
+		// print_stacks(params);
 		target = node->target;
 		if (node ->moves > 0)
 			move_stack_b(params->b, node);
@@ -62,5 +62,7 @@ void	push_swap(t_ps *params)
 			move_stack_a(params->a, target);
 		pa(params->a, params->b);
 	}
-	print_stacks(params);
+	while (params->a->head->alias != params->a->min->alias)
+		move_stack_a(params->a, params->a->min);
+	// print_stacks(params);
 }
