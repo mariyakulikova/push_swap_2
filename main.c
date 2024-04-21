@@ -6,13 +6,11 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:32:37 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 12:04:17 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/20 18:25:16 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 int	main(int argc, char **argv)
 {
@@ -36,7 +34,7 @@ int	main(int argc, char **argv)
 	set_stack_params(params, tab, sorted, size);
 	free(tab);
 	free(sorted);
-	// if (params->a->size > 1 && !is_stack_sorted(params->a->head))
-	push_swap(params);
+	if (params->a->size > 1 && !is_stack_sorted(params->a->head))
+		push_swap(params);
 	return (free_and_exit(params, EXIT_SUCCESS));
 }

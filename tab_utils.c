@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:48:30 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/17 11:38:46 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:55:09 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ int	set_value(long *value, char *data)
 	int	i;
 
 	i = 0 ;
-	if (*data == '-')
+	if ((*data == '-' || *data =='+') && !ft_isdigit(*(data + 1)))
+		return (1);
+	if (*data == '-' || *data =='+')
 		i++;
 	while (*(data + i))
 	{
