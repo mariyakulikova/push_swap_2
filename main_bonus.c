@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:25:25 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/24 14:55:20 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:19:53 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	checker(t_ps *params)
 	char	*line;
 
 	line = get_next_line(STDIN_FILENO);
-	while (ft_strcmp(line, "\n"))
+	while (line)
 	{
 		parse_cmd(line, params);
 		line = get_next_line(STDIN_FILENO);
@@ -81,7 +81,6 @@ int	main(int argc, char **argv)
 	set_stack_params(params, tab, sorted, size);
 	free(tab);
 	free(sorted);
-	if (params->a->size > 1 && !is_stack_sorted(params->a->head))
-		checker(params);
+	checker(params);
 	return (free_and_exit(params, EXIT_SUCCESS));
 }

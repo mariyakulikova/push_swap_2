@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 09:50:19 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/24 14:56:03 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:13:52 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	set_tab(int **tab, char **argv, int argc)
 	data = get_norm_data(argv, argc);
 	if (!data)
 		return (-1);
-	size = (split_size(data));
+	size = split_size(data);
 	*tab = (int *)malloc(sizeof(int) * size);
 	if (!*tab)
 		return (-1);
@@ -30,9 +30,15 @@ static int	set_tab(int **tab, char **argv, int argc)
 	while (++i < size)
 	{
 		if (set_value(&value, *(data + i)))
+		{
+			free_split(data);
 			return (-1);
+		}
 		if (is_duplicate(*tab, i, value))
+		{
+			free_split(data);
 			return (-1);
+		}
 		*((*tab) + i) = (int)value;
 	}
 	free_split(data);

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:32:37 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/04/20 18:25:16 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:54:05 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	{
 		write(2, ERR, ft_strlen(ERR));
 		free(tab);
+		// free(sorted);
 		return (EXIT_FAILURE);
 	}
 	params = params_init();
